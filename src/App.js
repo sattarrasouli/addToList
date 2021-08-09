@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css"
+import { useState } from "react"
+import Names from "./components/displayItem"
+import InputField from "./components/inputField"
 
 function App() {
+  const [name, setName] = useState()
+  const [surName, setSurName] = useState()
+  const [age, setAge] = useState()
+  const [person, setPerson] = useState([])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <div className="container">
+        <InputField person={person} setPerson={setPerson} name={name} setName={setName} surName={surName} setSurName={setSurName} setAge={setAge} age={age} />
+
+        {person.map(per => (
+          <Names name={per.name} surName={per.surName} setAge={setAge} setName={setName} setSurName={setSurName} setPerson={setPerson} age={per.age} id={per.id} />
+        ))}
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App
